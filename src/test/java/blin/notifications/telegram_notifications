@@ -4,6 +4,6 @@ java  \
 "-Denv=ENVIRONMENT" \
 "-DreportLink=BUILD_URL" \
 "-Dcomm=Any comment here" \
-"-Dconfig.file=notifications/telegram.json" \
+"-Dconfig.file=C:\Users\Ariisu\IdeaProjects\project_hw13\src\test\java\blin\notifications/telegram.json" \
 -jar allure-notifications-3.1.2.jar
 /////remote

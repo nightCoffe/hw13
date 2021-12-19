@@ -1,12 +1,17 @@
 package blin.tests;
 
-import com.codeborne.selenide.Configuration;
+import blin.config.ProjectConfig;
 import blin.helpers.Attach;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class TestBase {
+
     String nameObject1 = "ВТБ Капитал";
     String nameObject2 = "ВТБ Страхование";
     String nameObject3 = "ВТБ Факторинг";
@@ -22,11 +27,24 @@ public class TestBase {
 
     @BeforeAll
     static void setup() {
-        Configuration.browserSize = "1920x1080";
+        ProjectConfig conf = ConfigFactory.create(ProjectConfig.class);
+        Configuration.browser = conf.browserName();
+        Configuration.browserVersion = conf.browserVersion();
+        Configuration.browserSize = conf.browserSize();
+        if (!conf.remoteUrl().equals("")) {
+            Configuration.remote = conf.remoteUrl();
+        }
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+        Configuration.browserCapabilities = capabilities;
+
+        SelenideLogger.addListener("Allure", new AllureSelenide());
+
     }
 
     @AfterEach
-    public void tearDown() {
+    public void addAttach() {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
