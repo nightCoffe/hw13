@@ -10,6 +10,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import static java.lang.String.format;
+
 public class TestBase {
 
     String nameObject1 = "ВТБ Капитал";
@@ -31,9 +33,10 @@ public class TestBase {
         Configuration.browser = conf.browserName();
         Configuration.browserVersion = conf.browserVersion();
         Configuration.browserSize = conf.browserSize();
-        if (!conf.remoteUrl().equals("")) {
-            Configuration.remote = conf.remoteUrl();
-        }
+        Configuration.remote = format("https://%s:%s@%s", conf.login(),
+               conf.password(), conf.remoteUrl());
+
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);

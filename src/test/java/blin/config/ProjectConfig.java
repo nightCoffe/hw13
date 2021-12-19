@@ -21,5 +21,8 @@ public interface ProjectConfig extends Config {
     @DefaultValue("")
     String remoteUrl();
 
+    String login();
+    String password();
+
 }
 
