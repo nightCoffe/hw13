@@ -12,9 +12,11 @@ public class TestBase {
     String nameObject3 = "ВТБ Факторинг";
     String checkedElement1 = "Онлайн-сервисы";
     String checkedElement2 = "Отделения и Банкоматы";
+    String checkedElement3 = "English";
     String checkedText1 = "ВТБ Капитал предлагает полный спектр инвестиционно-банковских продуктов и услуг как российским";
     String checkedText2 = "Почему именно ВТБ Страхование";
     String checkedText3 = "ВТБ Факторинг";
+    String checkedText4 = "Careers";
 
     String URL = "https://www.vtb.ru/";
 

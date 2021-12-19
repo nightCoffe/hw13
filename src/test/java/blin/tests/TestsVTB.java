@@ -94,10 +94,9 @@ public class TestsVTB extends TestBase {
     public void changeLanguage() {
         step("Выбираем английский язык", () -> {
             open(URL);
-            $(".location").scrollTo().find(By.linkText("English")).click();;
-            //$(".modal-container").$(".modal-close").click();
+            $(".location").scrollTo().find(By.linkText(checkedElement3)).click();;
             step("Проверяем содержимое", () ->
-                    $(".navigation__second__menu").shouldHave(text("Careers")));
+                    $(".navigation__second__menu").shouldHave(text(checkedText4)));
         });
     }
 
