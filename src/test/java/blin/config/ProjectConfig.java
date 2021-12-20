@@ -7,7 +7,7 @@ import org.aeonbits.owner.Config;
         "classpath:config/remote.properties"
 })
 public interface ProjectConfig extends Config {
-
+/*
     @DefaultValue("chrome")
     String browserName();
 
@@ -16,6 +16,8 @@ public interface ProjectConfig extends Config {
 
     @DefaultValue("1920x1080")
     String browserSize();
+
+ */
 
     String login();
     String password();
