@@ -33,13 +33,11 @@ public class TestBase {
     @BeforeAll
     static void setup() {
 
-        //ProjectConfig conf = ConfigFactory.create(ProjectConfig.class, System.getProperties());
         Configuration.browser = conf.browserName();
         Configuration.browserVersion = conf.browserVersion();
         Configuration.browserSize = conf.browserSize();
         Configuration.remote = format("https://%s:%s@%s", conf.login(),
                 conf.password(), System.getProperty("remoteBrowser"));
-
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
