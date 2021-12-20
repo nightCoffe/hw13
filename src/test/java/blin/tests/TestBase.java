@@ -27,9 +27,12 @@ public class TestBase {
 
     String URL = "https://www.vtb.ru/";
 
+    public static ProjectConfig conf =
+            ConfigFactory.create(ProjectConfig.class);
     @BeforeAll
     static void setup() {
-        ProjectConfig conf = ConfigFactory.create(ProjectConfig.class, System.getProperties());
+
+        //ProjectConfig conf = ConfigFactory.create(ProjectConfig.class, System.getProperties());
         Configuration.browser = conf.browserName();
         Configuration.browserVersion = conf.browserVersion();
         Configuration.browserSize = conf.browserSize();
@@ -41,8 +44,9 @@ public class TestBase {
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;
+                SelenideLogger.addListener("Allure", new AllureSelenide());
 
-        SelenideLogger.addListener("Allure", new AllureSelenide());
+
 
     }
 
