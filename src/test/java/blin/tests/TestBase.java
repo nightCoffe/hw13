@@ -25,7 +25,7 @@ public class TestBase {
     String checkedText3 = "ВТБ Факторинг";
     String checkedText4 = "Careers";
 
-    String URL = "https://www.vtb.ru/";
+    String URL = "https://www.youtube.com/";
 
     public static ProjectConfig conf =
             ConfigFactory.create(ProjectConfig.class);
